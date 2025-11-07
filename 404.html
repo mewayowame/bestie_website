@@ -1,0 +1,21 @@
+cat > public/404.html << 'EOF'
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BESTIE - 株式会社ベスティ</title>
+    
+    <!-- GitHub PagesのSPAルーティング対応 -->
+    <script>
+      // 404ページからindex.htmlにリダイレクト
+      sessionStorage.redirect = location.href;
+    </script>
+    
+    <meta http-equiv="refresh" content="0;URL='/bestie_website/'"></meta>
+  </head>
+  <body>
+    <p>リダイレクト中...</p>
+  </body>
+</html>
+EOF
