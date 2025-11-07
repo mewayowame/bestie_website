@@ -1,0 +1,134 @@
+/* Tailwind CSSの基本スタイルをインポート */
+@tailwind base; /* ブラウザリセット、基礎作り */
+@tailwind components; /* 再利用コンポーネント定義エリア */
+@tailwind utilities;  /* メイン機能 全Tailwindクラスを有効化 */
+
+/* グローバルスタイル設定 */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* すべての要素にボックスサイジングを適用 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ボディの基本設定 */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* ルート要素の幅を100%に */
+#root {
+  width: 100%;
+}
+
+/* ==========================================
+   背景SVG浮遊アニメーション
+   ========================================== */
+
+/* 最下層（bg_btm）: 非常にゆっくり大きく浮遊（20秒周期） */
+@keyframes float-bottom {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-20px, 30px) scale(1.02);
+  }
+  50% {
+    transform: translate(-40px, 0) scale(1);
+  }
+  75% {
+    transform: translate(-20px, -30px) scale(0.98);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* 中間層（bg_top）: 中速で中程度の浮遊（15秒周期） */
+@keyframes float-middle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(30px, -20px);
+  }
+  50% {
+    transform: translate(0, -40px);
+  }
+  75% {
+    transform: translate(-30px, -20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* 最上層（sankaku三角形）: 速めで小さく浮遊（12秒周期） */
+@keyframes float-top {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(15px, -15px) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, -25px) rotate(0deg);
+  }
+  75% {
+    transform: translate(-15px, -15px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* アニメーションクラス */
+.bg-float-bottom {
+  animation: float-bottom 20s ease-in-out infinite;
+}
+
+.bg-float-middle {
+  animation: float-middle 15s ease-in-out infinite;
+}
+
+.bg-float-top {
+  animation: float-top 12s ease-in-out infinite;
+}
+
+/* ==========================================
+   背景SVGレスポンシブ対応
+   ========================================== */
+
+/* 画面サイズに応じて背景が適切に表示されるように調整 */
+@media (max-width: 640px) {
+  /* スマホ: オリジナルサイズで表示 */
+  /* bg_sankaku.svgは小さめに */
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* タブレット: 適度に拡大 */
+  /* bg_sankaku.svgは中サイズ */
+}
+
+@media (min-width: 1025px) {
+  /* PC: 大きく表示 */
+  /* bg_sankaku.svgは大サイズ */
+}
+
